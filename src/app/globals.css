@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 88%; /* Light gray #E0E0E0 */
+    --foreground: 220 10% 20%; /* Dark gray for text on light gray bg */
+
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 220 10% 20%; /* Dark gray */
+
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 220 10% 20%; /* Dark gray */
+
+    --primary: 207 100% 32%; /* Blue #0056A4 */
+    --primary-foreground: 0 0% 100%; /* White #FFFFFF */
+
+    --secondary: 0 0% 93%; /* A slightly off-white for secondary elements like buttons on dark bg */
+    --secondary-foreground: 207 100% 32%; /* Primary blue for text on secondary */
+    
+    --muted: 0 0% 95%; /* Lighter gray for muted elements */
+    --muted-foreground: 220 10% 40%; /* Medium gray for muted text */
+
+    --accent: 207 72% 53%; /* Lighter blue #3498db */
+    --accent-foreground: 0 0% 100%; /* White #FFFFFF */
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 80%; /* Slightly darker gray for borders */
+    --input: 0 0% 80%; /* Slightly darker gray for input borders */
+    --ring: 207 72% 53%; /* Accent blue for rings */
+
+    --radius: 0.5rem; /* Modern rounded corners */
+
+    /* Chart and Sidebar variables kept for ShadCN UI consistency, adjust if needed */
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    
+    --sidebar-background: 207 100% 32%; 
+    --sidebar-foreground: 0 0% 100%; 
+    --sidebar-primary: 207 72% 53%; 
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 207 100% 28%; 
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 207 100% 25%;
+    --sidebar-ring: 207 72% 53%;
+  }
+
+  .dark {
+    --background: 220 10% 10%; /* Dark background for dark mode */
+    --foreground: 0 0% 88%; /* Light gray text for dark mode */
+
+    --card: 220 10% 15%;
+    --card-foreground: 0 0% 88%;
+
+    --popover: 220 10% 15%;
+    --popover-foreground: 0 0% 88%;
+
+    --primary: 207 72% 53%; /* Lighter blue for dark mode primary */
+    --primary-foreground: 0 0% 100%; /* White */
+
+    --secondary: 220 10% 25%; /* Darker secondary for dark mode */
+    --secondary-foreground: 0 0% 88%; /* Light gray */
+    
+    --muted: 220 10% 20%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 207 100% 32%; /* Original Blue #0056A4 as accent in dark mode */
+    --accent-foreground: 0 0% 100%; /* White */
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 10% 30%;
+    --input: 220 10% 30%;
+    --ring: 207 72% 53%;
+    
+    --sidebar-background: 220 10% 15%;
+    --sidebar-foreground: 0 0% 88%;
+    --sidebar-primary: 207 72% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 10% 20%;
+    --sidebar-accent-foreground: 0 0% 88%;
+    --sidebar-border: 220 10% 25%;
+    --sidebar-ring: 207 72% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .animate-zoom-in-subtle {
+    animation: zoomInSubtle 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .animate-slide-in-left {
+    animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .animate-slide-in-right {
+    animation: slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.2) 20%,
+      rgba(255, 255, 255, 0.6) 60%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% auto;
+    animation: shimmer 2s infinite linear;
+  }
+
+  /* Hover card transitions */
+  .hover-card {
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hover-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  }
+
+  /* Accessibility respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-delay: -1ms !important;
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      background-attachment: initial !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0s !important;
+      transition-delay: 0s !important;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomInSubtle {
+  from {
+    transform: scale(1.05);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}

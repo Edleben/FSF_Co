@@ -1,0 +1,103 @@
+# See https://help.github.com/articles/ignoring-files/
+
+# dependencies
+node_modules/
+.pnp/
+.pnp.js
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+coverage/
+
+# Next.js
+.next/
+out/
+
+# production / build outputs
+build/
+dist/
+
+# cache
+.cache/
+.turbo/
+.vercel/
+.firebase/
+
+# Firebase / local emulator logs
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+database-debug.log
+pubsub-debug.log
+storage-debug.log
+firebase-debug.*.log
+firestore-debug.*.log
+
+# logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# environment variables / secrets
+.env
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+!.env.example
+
+# Genkit / AI generated local files
+.genkit/
+.genkit/*
+
+# TypeScript
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+next-env.d.ts
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# certificates / private keys
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+*.old
+
+# archive files
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+# audit / reports
+audit_results.json
+npm-audit.json
