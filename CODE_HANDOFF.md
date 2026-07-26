@@ -8,7 +8,7 @@
 |---|---|
 | Projet | Frédéric Saba Foundation Website |
 | Branche active | `feature/FSF_site_Update` |
-| Dernière mise à jour | 2026-07-20 |
+| Dernière mise à jour | 2026-07-26 |
 | Tracker fonctionnel | `PROJECT_TRACKER.md` |
 | Tracker UI | `/project-tracker` |
 | Référentiel d'ingénierie | `STABLE_FRAMEWORK.md` |
@@ -27,6 +27,7 @@ Le dépôt contient le site institutionnel bilingue de la Fondation Frédéric S
 | Composants | `src/components` | UI, navigation et layout partagés |
 | Traductions | `src/contexts/LanguageContext.tsx` | Traductions FR/EN et persistance de la langue |
 | Contenu métier | `src/lib/*-data.ts` | Initiatives, actualités et événements statiques |
+| Données de galerie | `src/data/gallery-images.json`, `src/lib/gallery-data.ts` | Catalogue de 230 images, typage et catégories |
 | Données du tracker | `src/lib/project-tracker-data.ts` | Sprints, features, statuts, preuves et critères |
 | Tracker UI | `src/app/project-tracker/page.tsx` | Visualisation interactive et accordéons |
 | Hébergement | `.github/workflows/deploy.yml`, `apphosting.yaml` | GitHub Pages et préparation Firebase |
@@ -58,6 +59,18 @@ Le dépôt contient le site institutionnel bilingue de la Fondation Frédéric S
 - Le workflow STABLE est obligatoire pour toute future intervention.
 - Le tracker Markdown, sa source UI et ce handoff doivent évoluer ensemble après chaque feature.
 
+### Fiabilisation de la galerie
+
+- Source typée unique pour les cinq séries de la galerie.
+- Référence Notsé alignée sur les 69 fichiers réellement présents.
+- Lieu, date, description et nombre de photos affichés pour chaque série.
+- Métadonnées éditoriales et textes alternatifs disponibles en français et en anglais.
+- Chargement différé conservé pour limiter le coût initial des 230 images.
+- Hero moderne avec une image représentative par catégorie, rotation automatique et commandes accessibles.
+- Recherche débouncée à 250 ms et filtre par catégorie.
+- Grille montée par lots de 24 avec `IntersectionObserver`; images rendues avec `loading="lazy"`.
+- Modal agrandi avec détails et navigation précédente/suivante.
+
 ## 5. Vérifications exécutées
 
 | Vérification | Résultat | Notes |
@@ -84,7 +97,7 @@ Le dépôt contient le site institutionnel bilingue de la Fondation Frédéric S
 
 ## 7. Prochaines actions recommandées
 
-1. Valider les coordonnées, profils, mentions légales et contenus officiels.
+1. Rappeler au client de fournir les coordonnées et profils officiels, puis reprendre immédiatement la feature Sprint 1 correspondante.
 2. Choisir l'architecture backend et la cible de déploiement.
 3. Mettre en service le formulaire de contact avec sécurité et observabilité.
 4. Ajouter les premiers tests automatisés et activer les quality gates.
@@ -138,3 +151,42 @@ Copier ce bloc à la suite du journal pour chaque livraison :
 - Risques : synchronisation manuelle entre le Markdown et les données UI jusqu'à l'automatisation future.
 - Rollback : retirer la route du tracker et l'entrée de navigation; les pages publiques historiques restent indépendantes.
 - Prochaine action : commencer le Sprint 1 par la validation des données institutionnelles.
+
+### 2026-07-26 — Coordonnées et profils officiels marqués incomplets
+
+- Objectif : refléter honnêtement l'impossibilité de finaliser la feature sans données officielles du client.
+- Sprint / feature : Sprint 1 — Coordonnées et profils officiels.
+- Fichiers modifiés : `src/lib/project-tracker-data.ts`, `PROJECT_TRACKER.md`, `CODE_HANDOFF.md`.
+- Décision d'architecture : aucun code public ni contenu institutionnel n'est modifié tant que les données ne sont pas validées; la feature reste `in-progress`, à 20 %, avec un blocage explicite.
+- Critères d'acceptation vérifiés : statut incomplet visible dans les sources de suivi; dépendance client et condition de reprise documentées.
+- Commandes et tests exécutés : `npm.cmd run typecheck` et `git diff --check` réussis.
+- Résultat QA manuelle : tracker UI version 1.2 chargé sans erreur console; Sprint 1 affiche 40 % et la feature ouverte affiche `In progress`, priorité `Critical`, progression 20 %.
+- Risques ou limitations : les coordonnées fictives restent présentes dans le site existant et ne doivent pas être considérées comme officielles.
+- Rollback : rétablir la version 1.1 des trois sources de suivi.
+- Prochaine action : rappeler au client de fournir l'adresse, le téléphone, l'e-mail, les profils d'équipe et les liens sociaux officiels, puis reprendre cette feature.
+
+### 2026-07-26 — Fiabilisation de la galerie
+
+- Objectif : supprimer les références cassées et rendre chaque série identifiable et auditable.
+- Sprint / feature : Sprint 1 — Fiabilisation de la galerie.
+- Fichiers modifiés : `src/lib/gallery-data.ts`, `src/app/gallerie/page.tsx`, `src/contexts/LanguageContext.tsx`, `src/lib/project-tracker-data.ts`, `PROJECT_TRACKER.md`, `CODE_HANDOFF.md`.
+- Décisions d'architecture : extraction des séries dans une source typée; la page reste responsable uniquement du rendu et du formatage localisé des dates.
+- Critères d'acceptation vérifiés : 230 références pour 230 fichiers, aucun fichier manquant, cinq séries avec lieu/date/description, textes alternatifs contextualisés, rendu FR/EN.
+- Commandes et tests exécutés : audit PowerShell des références, `npm.cmd run build`, puis `npm.cmd run typecheck`; les trois contrôles réussissent. Le premier typecheck parallèle au build a échoué par collision temporaire sur `.next`, puis a réussi en exécution séquentielle.
+- Résultat QA manuelle : `/gallerie` vérifiée sur le serveur local; 230 images chargées, zéro image cassée, zéro erreur console, métadonnées correctes en anglais et en français.
+- Risques ou limitations : les dates de Davié, des kits d'Agogomé et des distributions de vivres proviennent des métadonnées EXIF; la période du Mini-Camp provient de la publication publique relative à l'événement. Une validation éditoriale client reste souhaitable.
+- Rollback : rétablir l'ancienne définition locale des sections dans `src/app/gallerie/page.tsx` et la progression 65 %, en sachant que cela réintroduit la référence Notsé inexistante numéro 70.
+- Prochaine action : faire confirmer les dates historiques par le client lors de la prochaine revue éditoriale.
+
+### 2026-07-26 — Expérience avancée de la galerie
+
+- Objectif : transformer la galerie fiabilisée en expérience moderne, recherchable et performante.
+- Sprint / feature : Sprint 1 — Fiabilisation de la galerie, amélioration UI/UX.
+- Fichiers modifiés : `src/data/gallery-images.json`, `src/lib/gallery-data.ts`, `src/components/gallery/gallery-hero.tsx`, `src/components/gallery/gallery-explorer.tsx`, `src/app/gallerie/page.tsx`, traductions et trois sources de suivi.
+- Décisions d'architecture : catalogue JSON indépendant de l'UI; composants séparés pour le hero et l'exploration; aucun nouveau package; recherche débouncée à 250 ms et pagination visuelle par lots de 24 avec `IntersectionObserver`.
+- Critères d'acceptation vérifiés : 230 objets JSON complets et uniques; hero par catégorie; recherche Notsé = 69 résultats; filtre Kits scolaires = 116 résultats; modal détaillé et navigation suivante; deuxième lot chargé à l'approche du bas de grille.
+- Commandes et tests exécutés : audit JSON et chemins, `npm.cmd run typecheck`, `npm.cmd run build`, QA navigateur.
+- Résultat QA manuelle : hero, recherche, filtre, modal et chargement progressif fonctionnels; 24 cartes montées initialement puis 48; aucune erreur console.
+- Risques ou limitations : le catalogue JSON augmente la taille de la route galerie, mais évite 230 composants montés au premier rendu; les images originales restent lourdes et non optimisées en attendant la feature CDN/médiathèque.
+- Rollback : retirer les deux composants `src/components/gallery`, restaurer la page galerie par séries et la source typée précédente; le catalogue JSON peut être supprimé sans toucher aux fichiers médias.
+- Prochaine action : mesurer Lighthouse sur une cible déployée puis traiter l'optimisation/CDN des médias dans le Sprint 5.

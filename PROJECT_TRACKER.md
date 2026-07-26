@@ -1,6 +1,6 @@
 # FSF Website — Project Tracker & Audit
 
-> Version 1.1 · Audit de référence : 20 juillet 2026 · Branche de travail : `feature/FSF_site_Update`
+> Version 1.4 · Dernière révision : 26 juillet 2026 · Branche de travail : `feature/FSF_site_Update`
 
 Ce document est le registre d'évolution du site de la Fondation Frédéric Saba. Il doit être revu à chaque livraison, audit fonctionnel ou changement de périmètre. La page `/project-tracker` fournit la vue interactive correspondante.
 
@@ -17,7 +17,7 @@ Ce document est le registre d'évolution du site de la Fondation Frédéric Saba
 | Sprint | Objectif | Progression | État dominant |
 |---|---|---:|---|
 | Sprint 0 | Socle vitrine | 100 % | Terminé |
-| Sprint 1 | Données institutionnelles | 44 % | En cours |
+| Sprint 1 | Données institutionnelles | 49 % | En cours |
 | Sprint 2 | Formulaires et sécurité | 18 % | En cours |
 | Sprint 3 | Dons | 28 % | En cours |
 | Sprint 4 | Administration et contenus | 4 % | À démarrer |
@@ -42,10 +42,10 @@ Ce document est le registre d'évolution du site de la Fondation Frédéric Saba
 
 | Feature | Statut | Progression | Prochaine validation |
 |---|---|---:|---|
-| Coordonnées et profils officiels | En cours | 35 % | Supprimer toutes les valeurs d'exemple. |
+| Coordonnées et profils officiels | En cours — bloquée | 20 % | Reprendre dès réception de l'adresse, du téléphone, de l'e-mail, des profils d'équipe et des liens sociaux validés par le client. |
 | Actualités et événements à jour | En cours | 30 % | Publier du contenu récent et vérifié. |
 | Conformité éditoriale et légale | En cours | 45 % | Validation juridique et consentements. |
-| Fiabilisation de la galerie | En cours | 65 % | Corriger Notsé 70/69 et ajouter les métadonnées. |
+| Fiabilisation de la galerie | Terminée | 100 % | JSON de 230 images audité; hero par catégorie, recherche, filtres, grille progressive et modal détaillé vérifiés. |
 
 ## Sprint 2 — Formulaires et sécurité
 
@@ -104,6 +104,9 @@ Ce document est le registre d'évolution du site de la Fondation Frédéric Saba
 |---|---|---|---|
 | 2026-07-20 | 1.0 | Audit initial du dépôt | Baseline créée; socle vitrine complet, backends et administration prioritaires. |
 | 2026-07-20 | 1.1 | Tracker UI, accordéons et gouvernance | Tracker intégré au site; accordéons par sprint; STABLE et handoff ajoutés. |
+| 2026-07-26 | 1.2 | Coordonnées et profils officiels | Feature déclarée incomplète et bloquée faute de données client; rappel de reprise ajouté au tracker et au handoff. |
+| 2026-07-26 | 1.3 | Fiabilisation de la galerie | Référence Notsé corrigée à 69; 230 images vérifiées; lieux, dates, descriptions, comptages et textes alternatifs ajoutés en FR/EN. |
+| 2026-07-26 | 1.4 | Expérience avancée de la galerie | Hero rotatif par catégorie, JSON image, recherche débouncée, filtres, chargement par lots et modal navigable livrés sans nouvelle dépendance. |
 
 ## Procédure de mise à jour
 
@@ -118,7 +121,7 @@ Ce document est le registre d'évolution du site de la Fondation Frédéric Saba
 
 - Les formulaires donnent une confirmation sans transmettre réellement les données.
 - Le paiement est simulé.
-- Des coordonnées et profils sont encore fictifs.
+- Les coordonnées et profils officiels restent à fournir par le client; les valeurs actuelles ne sont pas validées et la feature doit être reprise dès leur réception.
 - Environ 2,85 Go d'images sont versionnés directement dans Git.
 - Les configurations GitHub Pages et Firebase App Hosting coexistent sans cible officielle.
 - Les erreurs TypeScript et ESLint sont ignorées pendant le build.
