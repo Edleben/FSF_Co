@@ -1,4 +1,4 @@
-export type FeatureStatus = "completed" | "in-progress" | "not-started";
+export type FeatureStatus = "completed" | "in-progress" | "not-started" | "deferred";
 export type FeaturePriority = "critical" | "high" | "medium" | "low";
 
 export interface TrackerFeature {
@@ -22,9 +22,9 @@ export interface TrackerSprint {
 
 export const trackerMeta = {
   project: "Frédéric Saba Foundation Website",
-  version: "1.4",
+  version: "1.5",
   auditDate: "2026-07-26",
-  scoring: "Terminée = 100 %, en cours = estimation vérifiée, non commencée = 0 %.",
+  scoring: "Terminée = 100 %, en cours = estimation vérifiée, à revisiter = progression historique conservée, non commencée = 0 %.",
 };
 
 export const projectSprints: TrackerSprint[] = [
@@ -44,11 +44,11 @@ export const projectSprints: TrackerSprint[] = [
     id: "sprint-1",
     title: "Sprint 1 — Données institutionnelles",
     objective: "Remplacer les contenus de démonstration par des informations officielles et fiables.",
-    horizon: "Prochain sprint",
+    horizon: "À revisiter ultérieurement",
     features: [
-      { id: "official-content", title: "Coordonnées et profils officiels", description: "Valider adresse, téléphone, e-mail, équipe et liens sociaux.", status: "in-progress", progress: 20, priority: "critical", evidence: "Feature incomplète et bloquée le 2026-07-26 : les données officielles du client ne sont pas encore disponibles; les valeurs d'exemple existantes ne doivent pas être considérées comme validées.", acceptanceCriteria: ["Toutes les coordonnées sont validées par le client", "Aucun contenu d'exemple ne subsiste", "Reprendre la feature dès réception des données officielles"] },
-      { id: "fresh-content", title: "Actualités et événements à jour", description: "Remplacer les événements 2024 et établir une cadence de publication.", status: "in-progress", progress: 30, priority: "high", evidence: "Structure et contenus existent, mais les dates sont anciennes.", acceptanceCriteria: ["Au moins trois actualités récentes", "Événements futurs vérifiés"] },
-      { id: "legal-content", title: "Conformité éditoriale et légale", description: "Finaliser confidentialité, mentions légales, consentements et droits photo.", status: "in-progress", progress: 45, priority: "critical", evidence: "Pages légales présentes mais aucune validation juridique documentée.", acceptanceCriteria: ["Textes validés par le responsable", "Consentement explicite sur les formulaires", "Droits des médias documentés"] },
+      { id: "official-content", title: "Coordonnées et profils officiels", description: "Valider adresse, téléphone, e-mail, équipe et liens sociaux.", status: "deferred", progress: 20, priority: "critical", evidence: "Feature incomplète, différée le 2026-07-26 et à revisiter : les données officielles du client ne sont pas encore disponibles; les valeurs d'exemple existantes ne doivent pas être considérées comme validées.", acceptanceCriteria: ["Toutes les coordonnées sont validées par le client", "Aucun contenu d'exemple ne subsiste", "Reprendre la feature dès réception des données officielles"] },
+      { id: "fresh-content", title: "Actualités et événements à jour", description: "Remplacer les événements 2024 et établir une cadence de publication.", status: "deferred", progress: 30, priority: "high", evidence: "Feature différée le 2026-07-26 et à revisiter; la structure existe, mais les dates et contenus restent anciens.", acceptanceCriteria: ["Replanifier la feature lors d'une prochaine revue", "Au moins trois actualités récentes", "Événements futurs vérifiés"] },
+      { id: "legal-content", title: "Conformité éditoriale et légale", description: "Finaliser confidentialité, mentions légales, consentements et droits photo.", status: "deferred", progress: 45, priority: "critical", evidence: "Feature différée le 2026-07-26 et à revisiter; les pages légales existent sans validation juridique documentée.", acceptanceCriteria: ["Replanifier la feature avec le responsable légal", "Textes validés par le responsable", "Consentement explicite sur les formulaires", "Droits des médias documentés"] },
       { id: "gallery-quality", title: "Fiabilisation de la galerie", description: "Corriger les références d'images et enrichir les métadonnées.", status: "completed", progress: 100, priority: "high", evidence: "Les 230 images sont décrites dans un JSON audité et exploitées par un hero par catégorie, une recherche débouncée, des filtres, une grille progressive par lots de 24 et un modal détaillé navigable.", acceptanceCriteria: ["Aucune image cassée", "Chaque image possède nom, catégorie, description et chemin dans le JSON", "Recherche et filtre par catégorie fonctionnels", "Ouverture détaillée et navigation clavier dans le modal", "Images de grille chargées paresseusement et montées progressivement", "Interface responsive disponible en français et en anglais"] },
     ],
   },

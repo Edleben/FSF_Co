@@ -97,7 +97,7 @@ Le dépôt contient le site institutionnel bilingue de la Fondation Frédéric S
 
 ## 7. Prochaines actions recommandées
 
-1. Rappeler au client de fournir les coordonnées et profils officiels, puis reprendre immédiatement la feature Sprint 1 correspondante.
+1. Lors de la prochaine revue de roadmap, revisiter les trois features différées du Sprint 1 : coordonnées officielles, contenus récents et conformité légale.
 2. Choisir l'architecture backend et la cible de déploiement.
 3. Mettre en service le formulaire de contact avec sécurité et observabilité.
 4. Ajouter les premiers tests automatisés et activer les quality gates.
@@ -190,3 +190,16 @@ Copier ce bloc à la suite du journal pour chaque livraison :
 - Risques ou limitations : le catalogue JSON augmente la taille de la route galerie, mais évite 230 composants montés au premier rendu; les images originales restent lourdes et non optimisées en attendant la feature CDN/médiathèque.
 - Rollback : retirer les deux composants `src/components/gallery`, restaurer la page galerie par séries et la source typée précédente; le catalogue JSON peut être supprimé sans toucher aux fichiers médias.
 - Prochaine action : mesurer Lighthouse sur une cible déployée puis traiter l'optimisation/CDN des médias dans le Sprint 5.
+
+### 2026-07-26 — Report du reste de Sprint 1
+
+- Objectif : rendre explicite la décision de reprendre ultérieurement les features institutionnelles non terminées.
+- Sprint / feature : Sprint 1 — coordonnées officielles, actualités et événements, conformité éditoriale et légale.
+- Fichiers modifiés : `src/lib/project-tracker-data.ts`, `src/app/project-tracker/page.tsx`, `PROJECT_TRACKER.md`, `CODE_HANDOFF.md`.
+- Décisions d'architecture : ajout du statut typé `deferred`, présenté comme « À revisiter » en français et `Deferred` en anglais; les pourcentages audités sont conservés.
+- Critères d'acceptation vérifiés : trois features différées, galerie maintenue terminée, filtre et compteur dédiés disponibles dans l'UI.
+- Commandes et tests exécutés : `npm.cmd run typecheck`, `npm.cmd run build` et `git diff --check` réussis.
+- Résultat QA manuelle : tracker UI version 1.5 chargé sans erreur console; compteur `Deferred` = 3, Sprint 1 = 49 %, trois features différées et Galerie maintenue `Completed` à 100 %; filtre `Deferred` limité à Sprint 1.
+- Risques ou limitations : aucune date de reprise n'est encore définie; la prochaine revue de roadmap doit replanifier ces trois features.
+- Rollback : rétablir leur statut `in-progress` et retirer le statut `deferred` du tracker.
+- Prochaine action : revisiter ces trois features lors de la prochaine revue convenue avec le client.

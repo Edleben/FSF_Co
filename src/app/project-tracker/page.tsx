@@ -10,6 +10,7 @@ import {
   Clock3,
   Gauge,
   ListFilter,
+  PauseCircle,
   RefreshCw,
   ShieldCheck,
   Target,
@@ -38,6 +39,7 @@ const copy = {
     global: "Progression globale",
     completed: "Terminées",
     inProgress: "En cours",
+    deferred: "À revisiter",
     notStarted: "Non commencées",
     filters: "Filtres",
     allSprints: "Tous les sprints",
@@ -55,7 +57,7 @@ const copy = {
     auditVersion: "Version d'audit",
     auditDate: "Audit de référence",
     priorities: { critical: "Critique", high: "Haute", medium: "Moyenne", low: "Basse" },
-    statuses: { completed: "Terminée", "in-progress": "En cours", "not-started": "Non commencée" },
+    statuses: { completed: "Terminée", "in-progress": "En cours", "not-started": "Non commencée", deferred: "À revisiter" },
   },
   en: {
     eyebrow: "Development governance",
@@ -64,6 +66,7 @@ const copy = {
     global: "Overall progress",
     completed: "Completed",
     inProgress: "In progress",
+    deferred: "Deferred",
     notStarted: "Not started",
     filters: "Filters",
     allSprints: "All sprints",
@@ -81,7 +84,7 @@ const copy = {
     auditVersion: "Audit version",
     auditDate: "Baseline audit",
     priorities: { critical: "Critical", high: "High", medium: "Medium", low: "Low" },
-    statuses: { completed: "Completed", "in-progress": "In progress", "not-started": "Not started" },
+    statuses: { completed: "Completed", "in-progress": "In progress", "not-started": "Not started", deferred: "Deferred" },
   },
 };
 
@@ -89,6 +92,7 @@ const statusStyles: Record<FeatureStatus, string> = {
   completed: "border-emerald-200 bg-emerald-50 text-emerald-800",
   "in-progress": "border-amber-200 bg-amber-50 text-amber-800",
   "not-started": "border-slate-200 bg-slate-100 text-slate-700",
+  deferred: "border-violet-200 bg-violet-50 text-violet-800",
 };
 
 const priorityStyles = {
@@ -101,6 +105,7 @@ const priorityStyles = {
 function StatusIcon({ status }: { status: FeatureStatus }) {
   if (status === "completed") return <CheckCircle2 className="h-5 w-5 text-emerald-600" aria-hidden="true" />;
   if (status === "in-progress") return <Clock3 className="h-5 w-5 text-amber-600" aria-hidden="true" />;
+  if (status === "deferred") return <PauseCircle className="h-5 w-5 text-violet-600" aria-hidden="true" />;
   return <CircleDashed className="h-5 w-5 text-slate-500" aria-hidden="true" />;
 }
 
@@ -129,6 +134,7 @@ export default function ProjectTrackerPage() {
     progress: calculateProgress(allTrackerFeatures),
     completed: allTrackerFeatures.filter((feature) => feature.status === "completed").length,
     inProgress: allTrackerFeatures.filter((feature) => feature.status === "in-progress").length,
+    deferred: allTrackerFeatures.filter((feature) => feature.status === "deferred").length,
     notStarted: allTrackerFeatures.filter((feature) => feature.status === "not-started").length,
   }), [lastChecked]);
 
@@ -181,9 +187,10 @@ export default function ProjectTrackerPage() {
             </CardContent>
           </Card>
 
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             <Card><CardContent className="p-4"><CheckCircle2 className="mb-3 h-5 w-5 text-emerald-600" aria-hidden="true" /><div className="text-3xl font-bold tabular-nums">{summary.completed}</div><p className="text-sm text-muted-foreground">{labels.completed}</p></CardContent></Card>
             <Card><CardContent className="p-4"><Clock3 className="mb-3 h-5 w-5 text-amber-600" aria-hidden="true" /><div className="text-3xl font-bold tabular-nums">{summary.inProgress}</div><p className="text-sm text-muted-foreground">{labels.inProgress}</p></CardContent></Card>
+            <Card><CardContent className="p-4"><PauseCircle className="mb-3 h-5 w-5 text-violet-600" aria-hidden="true" /><div className="text-3xl font-bold tabular-nums">{summary.deferred}</div><p className="text-sm text-muted-foreground">{labels.deferred}</p></CardContent></Card>
             <Card><CardContent className="p-4"><CircleDashed className="mb-3 h-5 w-5 text-slate-500" aria-hidden="true" /><div className="text-3xl font-bold tabular-nums">{summary.notStarted}</div><p className="text-sm text-muted-foreground">{labels.notStarted}</p></CardContent></Card>
           </div>
         </section>
@@ -284,6 +291,7 @@ export default function ProjectTrackerPage() {
                   <SelectItem value="all">{labels.allStatuses}</SelectItem>
                   <SelectItem value="completed">{labels.statuses.completed}</SelectItem>
                   <SelectItem value="in-progress">{labels.statuses["in-progress"]}</SelectItem>
+                  <SelectItem value="deferred">{labels.statuses.deferred}</SelectItem>
                   <SelectItem value="not-started">{labels.statuses["not-started"]}</SelectItem>
                 </SelectContent>
               </Select>
