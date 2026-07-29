@@ -236,9 +236,9 @@ Copier ce bloc à la suite du journal pour chaque livraison :
 - Sprint / feature : Sprint 6 — Stratégie de déploiement.
 - Fichiers modifiés : `next.config.ts`, `src/lib/project-tracker-data.ts`, `PROJECT_TRACKER.md`, `CODE_HANDOFF.md`.
 - Décisions d'architecture : `basePath` et `assetPrefix` utilisent `/FSF_Co`, identique au nom sensible à la casse du dépôt et à l'URL Pages.
-- Critères d'acceptation vérifiés : à compléter après le nouveau déploiement et les contrôles HTTP.
+- Critères d'acceptation vérifiés : workflow GitHub Pages réussi; accueil, tracker, galerie et contact répondent en HTTP 200; les ressources CSS et JavaScript contrôlées répondent également en HTTP 200.
 - Commandes et tests exécutés : `npm.cmd run typecheck`, build avec `GITHUB_PAGES=true`, contrôle de `out/index.html` et `git diff --check` réussis; aucun chemin `/FSF_Com` ne subsiste dans la page exportée.
-- Résultat QA manuelle : à compléter après publication.
+- Résultat QA manuelle : URL publique `https://edleben.github.io/FSF_Co/` accessible avec le titre FSF; sous-chemin corrigé et ressources statiques chargées depuis `/FSF_Co`.
 - Risques ou limitations : le poids des médias allonge le workflow; les formulaires backend restent hors du périmètre GitHub Pages.
 - Rollback : rétablir le sous-chemin précédent, ce qui remettrait les ressources publiques en erreur 404.
 - Prochaine action : construire avec `GITHUB_PAGES=true`, publier et contrôler la page, les assets et les routes principales.
