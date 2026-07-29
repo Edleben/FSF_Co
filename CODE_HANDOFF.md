@@ -8,7 +8,7 @@
 |---|---|
 | Projet | Frédéric Saba Foundation Website |
 | Branche active | `feature/FSF_site_Update` |
-| Dernière mise à jour | 2026-07-26 |
+| Dernière mise à jour | 2026-07-29 |
 | Tracker fonctionnel | `PROJECT_TRACKER.md` |
 | Tracker UI | `/project-tracker` |
 | Référentiel d'ingénierie | `STABLE_FRAMEWORK.md` |
@@ -98,8 +98,8 @@ Le dépôt contient le site institutionnel bilingue de la Fondation Frédéric S
 ## 7. Prochaines actions recommandées
 
 1. Lors de la prochaine revue de roadmap, revisiter les trois features différées du Sprint 1 : coordonnées officielles, contenus récents et conformité légale.
-2. Choisir l'architecture backend et la cible de déploiement.
-3. Mettre en service le formulaire de contact avec sécurité et observabilité.
+2. Lors de la reprise du Sprint 2, choisir l'architecture backend et la cible de déploiement.
+3. Replanifier ensemble le traitement des contacts, les candidatures bénévoles, la sécurité des formulaires et les inscriptions aux événements.
 4. Ajouter les premiers tests automatisés et activer les quality gates.
 5. Déplacer et optimiser les médias via un stockage/CDN adapté.
 6. Intégrer ensuite le paiement et les dons récurrents.
@@ -203,3 +203,16 @@ Copier ce bloc à la suite du journal pour chaque livraison :
 - Risques ou limitations : aucune date de reprise n'est encore définie; la prochaine revue de roadmap doit replanifier ces trois features.
 - Rollback : rétablir leur statut `in-progress` et retirer le statut `deferred` du tracker.
 - Prochaine action : revisiter ces trois features lors de la prochaine revue convenue avec le client.
+
+### 2026-07-29 — Report de Sprint 2
+
+- Objectif : rendre explicite la décision de reprendre ultérieurement les parcours de formulaires et de sécurité.
+- Sprint / feature : Sprint 2 — traitement des contacts, candidatures bénévoles, protection antispam et confidentialité, inscriptions aux événements.
+- Fichiers modifiés : `src/lib/project-tracker-data.ts`, `PROJECT_TRACKER.md`, `CODE_HANDOFF.md`.
+- Décisions d'architecture : les quatre features passent au statut typé `deferred`; leurs progressions auditées restent à 35 %, 35 %, 0 % et 0 %, soit 18 % pour le sprint. Aucun formulaire ni comportement public n'est modifié.
+- Critères d'acceptation vérifiés : toutes les features de Sprint 2 sont visibles comme « À revisiter » dans les sources de suivi; les conditions de reprise sont documentées.
+- Commandes et tests exécutés : `npm.cmd run typecheck`, `npm.cmd run build` et `git diff --check` réussis; le build statique inclut `/project-tracker`.
+- Résultat QA manuelle : non exécutée dans le navigateur intégré, l'accès automatisé à l'URL locale ayant été refusé par sa politique de sécurité; la cohérence des données et la génération de la route ont été vérifiées statiquement.
+- Risques ou limitations : les formulaires existants restent simulés et ne transmettent aucune donnée; aucune date de reprise n'est définie.
+- Rollback : rétablir les deux premières features à `in-progress`, les deux autres à `not-started`, puis remettre le tracker en version 1.5.
+- Prochaine action : replanifier le Sprint 2 après choix de l'architecture backend, de la cible de déploiement et des services de notification.

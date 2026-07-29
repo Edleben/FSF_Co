@@ -22,8 +22,8 @@ export interface TrackerSprint {
 
 export const trackerMeta = {
   project: "Frédéric Saba Foundation Website",
-  version: "1.5",
-  auditDate: "2026-07-26",
+  version: "1.6",
+  auditDate: "2026-07-29",
   scoring: "Terminée = 100 %, en cours = estimation vérifiée, à revisiter = progression historique conservée, non commencée = 0 %.",
 };
 
@@ -56,12 +56,12 @@ export const projectSprints: TrackerSprint[] = [
     id: "sprint-2",
     title: "Sprint 2 — Formulaires et sécurité",
     objective: "Transformer les formulaires simulés en parcours fiables et sécurisés.",
-    horizon: "Après validation des contenus",
+    horizon: "À revisiter ultérieurement",
     features: [
-      { id: "contact-backend", title: "Traitement des messages de contact", description: "API, stockage, e-mail et suivi de statut pour chaque demande.", status: "in-progress", progress: 35, priority: "critical", evidence: "Interface et validation terminées; soumission limitée à console.log.", acceptanceCriteria: ["Message stocké côté serveur", "Notification envoyée", "Erreur serveur gérée"] },
-      { id: "volunteer-backend", title: "Gestion des candidatures bénévoles", description: "Enregistrer, notifier et permettre le suivi des candidatures.", status: "in-progress", progress: 35, priority: "high", evidence: "Formulaire validé côté client; aucun backend.", acceptanceCriteria: ["Candidature persistée", "Accusé de réception envoyé", "Statut consultable par l'équipe"] },
-      { id: "form-security", title: "Protection antispam et confidentialité", description: "CAPTCHA, rate limiting, consentement et journalisation sûre.", status: "not-started", progress: 0, priority: "critical", evidence: "Aucune protection serveur identifiée.", acceptanceCriteria: ["Rate limiting actif", "CAPTCHA accessible", "Aucune donnée personnelle dans les logs client"] },
-      { id: "event-registration", title: "Inscription aux événements", description: "Places, formulaire d'inscription, confirmation et annulation.", status: "not-started", progress: 0, priority: "medium", evidence: "Un placeholder est présent sur la page événement.", acceptanceCriteria: ["Capacité configurable", "Confirmation envoyée", "Liste des participants exportable"] },
+      { id: "contact-backend", title: "Traitement des messages de contact", description: "API, stockage, e-mail et suivi de statut pour chaque demande.", status: "deferred", progress: 35, priority: "critical", evidence: "Feature différée le 2026-07-29 et à revisiter; l'interface et la validation existent, mais la soumission reste limitée à console.log faute d'architecture backend validée.", acceptanceCriteria: ["Replanifier après choix de l'architecture backend et de la cible de déploiement", "Message stocké côté serveur", "Notification envoyée", "Erreur serveur gérée"] },
+      { id: "volunteer-backend", title: "Gestion des candidatures bénévoles", description: "Enregistrer, notifier et permettre le suivi des candidatures.", status: "deferred", progress: 35, priority: "high", evidence: "Feature différée le 2026-07-29 et à revisiter; le formulaire est validé côté client, sans persistance ni notification.", acceptanceCriteria: ["Replanifier après choix de l'architecture backend", "Candidature persistée", "Accusé de réception envoyé", "Statut consultable par l'équipe"] },
+      { id: "form-security", title: "Protection antispam et confidentialité", description: "CAPTCHA, rate limiting, consentement et journalisation sûre.", status: "deferred", progress: 0, priority: "critical", evidence: "Feature non commencée, différée le 2026-07-29 et à revisiter avec les backends des formulaires.", acceptanceCriteria: ["Replanifier avec les parcours de formulaire côté serveur", "Rate limiting actif", "CAPTCHA accessible", "Aucune donnée personnelle dans les logs client"] },
+      { id: "event-registration", title: "Inscription aux événements", description: "Places, formulaire d'inscription, confirmation et annulation.", status: "deferred", progress: 0, priority: "medium", evidence: "Feature non commencée, différée le 2026-07-29 et à revisiter; seul un placeholder est présent sur la page événement.", acceptanceCriteria: ["Replanifier lors d'une prochaine revue de roadmap", "Capacité configurable", "Confirmation envoyée", "Liste des participants exportable"] },
     ],
   },
   {

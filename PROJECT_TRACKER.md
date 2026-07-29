@@ -1,6 +1,6 @@
 # FSF Website — Project Tracker & Audit
 
-> Version 1.5 · Dernière révision : 26 juillet 2026 · Branche de travail : `feature/FSF_site_Update`
+> Version 1.6 · Dernière révision : 29 juillet 2026 · Branche de travail : `feature/FSF_site_Update`
 
 Ce document est le registre d'évolution du site de la Fondation Frédéric Saba. Il doit être revu à chaque livraison, audit fonctionnel ou changement de périmètre. La page `/project-tracker` fournit la vue interactive correspondante.
 
@@ -19,7 +19,7 @@ Ce document est le registre d'évolution du site de la Fondation Frédéric Saba
 |---|---|---:|---|
 | Sprint 0 | Socle vitrine | 100 % | Terminé |
 | Sprint 1 | Données institutionnelles | 49 % | À revisiter |
-| Sprint 2 | Formulaires et sécurité | 18 % | En cours |
+| Sprint 2 | Formulaires et sécurité | 18 % | À revisiter |
 | Sprint 3 | Dons | 28 % | En cours |
 | Sprint 4 | Administration et contenus | 4 % | À démarrer |
 | Sprint 5 | Qualité et croissance | 27 % | En cours |
@@ -50,12 +50,14 @@ Ce document est le registre d'évolution du site de la Fondation Frédéric Saba
 
 ## Sprint 2 — Formulaires et sécurité
 
+**Horizon :** à revisiter ultérieurement.
+
 | Feature | Statut | Progression | Prochaine validation |
 |---|---|---:|---|
-| Traitement des messages de contact | En cours | 35 % | Stockage serveur, notification et gestion d'erreur. |
-| Gestion des candidatures bénévoles | En cours | 35 % | Persistance, accusé de réception et suivi. |
-| Protection antispam et confidentialité | Non commencée | 0 % | CAPTCHA, rate limiting et consentement. |
-| Inscription aux événements | Non commencée | 0 % | Capacité, inscription, confirmation et export. |
+| Traitement des messages de contact | À revisiter | 35 % | Replanifier après choix de l'architecture backend et de la cible de déploiement; puis stockage serveur, notification et gestion d'erreur. |
+| Gestion des candidatures bénévoles | À revisiter | 35 % | Replanifier après choix de l'architecture backend; puis persistance, accusé de réception et suivi. |
+| Protection antispam et confidentialité | À revisiter | 0 % | Replanifier avec les backends des formulaires; puis CAPTCHA, rate limiting et consentement. |
+| Inscription aux événements | À revisiter | 0 % | Replanifier lors d'une prochaine revue; puis capacité, inscription, confirmation et export. |
 
 ## Sprint 3 — Dons
 
@@ -109,6 +111,7 @@ Ce document est le registre d'évolution du site de la Fondation Frédéric Saba
 | 2026-07-26 | 1.3 | Fiabilisation de la galerie | Référence Notsé corrigée à 69; 230 images vérifiées; lieux, dates, descriptions, comptages et textes alternatifs ajoutés en FR/EN. |
 | 2026-07-26 | 1.4 | Expérience avancée de la galerie | Hero rotatif par catégorie, JSON image, recherche débouncée, filtres, chargement par lots et modal navigable livrés sans nouvelle dépendance. |
 | 2026-07-26 | 1.5 | Report du reste de Sprint 1 | Coordonnées, contenus récents et conformité marqués « À revisiter »; avancement historique conservé et filtre UI ajouté. |
+| 2026-07-29 | 1.6 | Report de Sprint 2 | Les quatre features de formulaires et sécurité sont marquées « À revisiter »; les progressions auditées sont conservées dans l'attente d'une replanification backend. |
 
 ## Procédure de mise à jour
 
@@ -121,7 +124,7 @@ Ce document est le registre d'évolution du site de la Fondation Frédéric Saba
 
 ## Risques ouverts
 
-- Les formulaires donnent une confirmation sans transmettre réellement les données.
+- Les formulaires donnent une confirmation sans transmettre réellement les données; les quatre features du Sprint 2 sont différées et doivent être replanifiées après choix de l'architecture backend.
 - Le paiement est simulé.
 - Les coordonnées et profils officiels restent à fournir par le client; les valeurs actuelles ne sont pas validées et la feature doit être reprise dès leur réception.
 - Environ 2,85 Go d'images sont versionnés directement dans Git.
