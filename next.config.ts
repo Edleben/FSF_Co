@@ -6,8 +6,8 @@ const isGithubPages = process.env.GITHUB_PAGES === 'true';
 const nextConfig: NextConfig = {
   output: 'export',
   trailingSlash: true,
-  basePath: isGithubPages ? '/FSF_Com' : undefined,
-  assetPrefix: isGithubPages ? '/FSF_Com' : undefined,
+  basePath: isGithubPages ? '/FSF_Co' : undefined,
+  assetPrefix: isGithubPages ? '/FSF_Co' : undefined,
   typescript: {
     ignoreBuildErrors: true,
   },

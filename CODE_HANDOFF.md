@@ -223,9 +223,22 @@ Copier ce bloc à la suite du journal pour chaque livraison :
 - Sprint / feature : Sprint 6 — Stratégie de déploiement.
 - Fichiers modifiés : `.github/workflows/deploy.yml`, `src/lib/project-tracker-data.ts`, `PROJECT_TRACKER.md`, `CODE_HANDOFF.md`.
 - Décisions d'architecture : GitHub Pages devient la cible publique du frontend statique; `actions/configure-pages` est autorisé à activer Pages automatiquement. Firebase reste hors du chemin de publication frontend.
-- Critères d'acceptation vérifiés : à compléter après le nouveau workflow et le contrôle de l'URL publique.
-- Commandes et tests exécutés : premier workflow diagnostiqué; échec confirmé à l'étape `Setup Pages` parce que Pages n'était pas activé.
-- Résultat QA manuelle : à compléter après publication.
+- Critères d'acceptation vérifiés : Pages activé et workflow terminé avec succès; la première vérification HTTP a toutefois révélé des ressources 404 à cause d'un sous-chemin incorrect.
+- Commandes et tests exécutés : premier workflow diagnostiqué; échec confirmé à l'étape `Setup Pages`, puis nouvelle exécution réussie après activation manuelle de Pages.
+- Résultat QA manuelle : page HTML publique accessible, mais CSS et JavaScript 404 sous `/FSF_Com`; correction reportée dans l'entrée suivante.
 - Risques ou limitations : le dépôt et l'artefact contiennent environ 2,85 Go de médias, ce qui allonge fortement le checkout et peut dépasser les limites de GitHub Pages.
 - Rollback : retirer `enablement: true` et revenir au commit de déploiement précédent; le site local reste inchangé.
 - Prochaine action : pousser la correction, attendre le workflow, puis vérifier l'URL publique et les routes principales.
+
+### 2026-07-29 — Correction du sous-chemin GitHub Pages
+
+- Objectif : rendre la publication GitHub Pages entièrement fonctionnelle sous le nom exact du dépôt.
+- Sprint / feature : Sprint 6 — Stratégie de déploiement.
+- Fichiers modifiés : `next.config.ts`, `src/lib/project-tracker-data.ts`, `PROJECT_TRACKER.md`, `CODE_HANDOFF.md`.
+- Décisions d'architecture : `basePath` et `assetPrefix` utilisent `/FSF_Co`, identique au nom sensible à la casse du dépôt et à l'URL Pages.
+- Critères d'acceptation vérifiés : à compléter après le nouveau déploiement et les contrôles HTTP.
+- Commandes et tests exécutés : `npm.cmd run typecheck`, build avec `GITHUB_PAGES=true`, contrôle de `out/index.html` et `git diff --check` réussis; aucun chemin `/FSF_Com` ne subsiste dans la page exportée.
+- Résultat QA manuelle : à compléter après publication.
+- Risques ou limitations : le poids des médias allonge le workflow; les formulaires backend restent hors du périmètre GitHub Pages.
+- Rollback : rétablir le sous-chemin précédent, ce qui remettrait les ressources publiques en erreur 404.
+- Prochaine action : construire avec `GITHUB_PAGES=true`, publier et contrôler la page, les assets et les routes principales.

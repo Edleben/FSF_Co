@@ -1,6 +1,6 @@
 # FSF Website — Project Tracker & Audit
 
-> Version 1.7 · Dernière révision : 29 juillet 2026 · Branche de travail : `feature/FSF_site_Update`
+> Version 1.8 · Dernière révision : 29 juillet 2026 · Branche de travail : `feature/FSF_site_Update`
 
 Ce document est le registre d'évolution du site de la Fondation Frédéric Saba. Il doit être revu à chaque livraison, audit fonctionnel ou changement de périmètre. La page `/project-tracker` fournit la vue interactive correspondante.
 
@@ -23,7 +23,7 @@ Ce document est le registre d'évolution du site de la Fondation Frédéric Saba
 | Sprint 3 | Dons | 28 % | En cours |
 | Sprint 4 | Administration et contenus | 4 % | À démarrer |
 | Sprint 5 | Qualité et croissance | 27 % | En cours |
-| Sprint 6 | Fiabilité et innovation | 36 % | En cours |
+| Sprint 6 | Fiabilité et innovation | 38 % | En cours |
 
 ## Sprint 0 — Socle vitrine
 
@@ -97,7 +97,7 @@ Ce document est le registre d'évolution du site de la Fondation Frédéric Saba
 | Tests automatisés | Non commencée | 0 % | Couvrir les parcours critiques dans la CI. |
 | Quality gates CI | En cours | 30 % | Ne plus ignorer TypeScript/ESLint et exiger la CI. |
 | Monitoring et alertes | Non commencée | 0 % | Alertes et corrélation front/backend. |
-| Stratégie de déploiement | En cours | 75 % | GitHub Pages retenu pour le frontend statique; vérifier la publication, puis documenter le rollback et les previews. |
+| Stratégie de déploiement | En cours | 85 % | GitHub Pages retenu pour le frontend statique avec le sous-chemin `/FSF_Co`; maintenir le rollback et préparer les previews. |
 | Fonctions IA encadrées | En cours | 10 % | Valider l'usage, la confidentialité, la qualité et le coût. |
 | Gouvernance STABLE et handoff | Terminée | 100 % | Maintenir STABLE, le tracker et `CODE_HANDOFF.md` après chaque feature. |
 
@@ -113,6 +113,7 @@ Ce document est le registre d'évolution du site de la Fondation Frédéric Saba
 | 2026-07-26 | 1.5 | Report du reste de Sprint 1 | Coordonnées, contenus récents et conformité marqués « À revisiter »; avancement historique conservé et filtre UI ajouté. |
 | 2026-07-29 | 1.6 | Report de Sprint 2 | Les quatre features de formulaires et sécurité sont marquées « À revisiter »; les progressions auditées sont conservées dans l'attente d'une replanification backend. |
 | 2026-07-29 | 1.7 | Activation du déploiement public | GitHub Pages retenu pour le frontend statique; le workflow peut activer Pages automatiquement avant la construction et la publication. |
+| 2026-07-29 | 1.8 | Correction du sous-chemin GitHub Pages | `basePath` et `assetPrefix` alignés sur le dépôt `FSF_Co` afin que les ressources CSS, JavaScript et médias soient servies depuis l'URL publique. |
 
 ## Procédure de mise à jour
 
