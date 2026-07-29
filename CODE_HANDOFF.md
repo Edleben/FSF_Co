@@ -13,7 +13,7 @@
 | Tracker UI | `/project-tracker` |
 | Référentiel d'ingénierie | `STABLE_FRAMEWORK.md` |
 | Règles AI obligatoires | `STABLE_AI_CODING_SKILL.md` |
-| État de vérification | TypeScript et build statique validés |
+| État de vérification | TypeScript, build statique et déploiement GitHub Pages validés |
 
 ## 2. Objectif du projet
 
@@ -30,7 +30,7 @@ Le dépôt contient le site institutionnel bilingue de la Fondation Frédéric S
 | Données de galerie | `src/data/gallery-images.json`, `src/lib/gallery-data.ts` | Catalogue de 230 images, typage et catégories |
 | Données du tracker | `src/lib/project-tracker-data.ts` | Sprints, features, statuts, preuves et critères |
 | Tracker UI | `src/app/project-tracker/page.tsx` | Visualisation interactive et accordéons |
-| Hébergement | `.github/workflows/deploy.yml`, `apphosting.yaml` | GitHub Pages et préparation Firebase |
+| Hébergement | `.github/workflows/deploy.yml`, `apphosting.yaml` | GitHub Pages pour le frontend public; Firebase réservé à une future décision backend |
 
 ## 4. Features livrées dans le cycle courant
 
@@ -92,7 +92,7 @@ Le dépôt contient le site institutionnel bilingue de la Fondation Frédéric S
 - Le paiement reste simulé.
 - Plusieurs contenus institutionnels sont fictifs ou anciens.
 - Environ 2,85 Go de médias sont stockés directement dans Git.
-- GitHub Pages et Firebase App Hosting coexistent sans décision de cible officielle.
+- GitHub Pages est la cible publique officielle du frontend statique; le rôle futur de Firebase pour le backend reste à définir.
 - Le tracker est alimenté par des données statiques : son polling recalcule l'état embarqué, mais ne consulte pas encore une source distante.
 
 ## 7. Prochaines actions recommandées
@@ -216,3 +216,16 @@ Copier ce bloc à la suite du journal pour chaque livraison :
 - Risques ou limitations : les formulaires existants restent simulés et ne transmettent aucune donnée; aucune date de reprise n'est définie.
 - Rollback : rétablir les deux premières features à `in-progress`, les deux autres à `not-started`, puis remettre le tracker en version 1.5.
 - Prochaine action : replanifier le Sprint 2 après choix de l'architecture backend, de la cible de déploiement et des services de notification.
+
+### 2026-07-29 — Activation du déploiement GitHub Pages
+
+- Objectif : publier le frontend statique sur une URL partageable avec le client.
+- Sprint / feature : Sprint 6 — Stratégie de déploiement.
+- Fichiers modifiés : `.github/workflows/deploy.yml`, `src/lib/project-tracker-data.ts`, `PROJECT_TRACKER.md`, `CODE_HANDOFF.md`.
+- Décisions d'architecture : GitHub Pages devient la cible publique du frontend statique; `actions/configure-pages` est autorisé à activer Pages automatiquement. Firebase reste hors du chemin de publication frontend.
+- Critères d'acceptation vérifiés : à compléter après le nouveau workflow et le contrôle de l'URL publique.
+- Commandes et tests exécutés : premier workflow diagnostiqué; échec confirmé à l'étape `Setup Pages` parce que Pages n'était pas activé.
+- Résultat QA manuelle : à compléter après publication.
+- Risques ou limitations : le dépôt et l'artefact contiennent environ 2,85 Go de médias, ce qui allonge fortement le checkout et peut dépasser les limites de GitHub Pages.
+- Rollback : retirer `enablement: true` et revenir au commit de déploiement précédent; le site local reste inchangé.
+- Prochaine action : pousser la correction, attendre le workflow, puis vérifier l'URL publique et les routes principales.

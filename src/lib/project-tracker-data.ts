@@ -22,7 +22,7 @@ export interface TrackerSprint {
 
 export const trackerMeta = {
   project: "Frédéric Saba Foundation Website",
-  version: "1.6",
+  version: "1.7",
   auditDate: "2026-07-29",
   scoring: "Terminée = 100 %, en cours = estimation vérifiée, à revisiter = progression historique conservée, non commencée = 0 %.",
 };
@@ -113,7 +113,7 @@ export const projectSprints: TrackerSprint[] = [
       { id: "automated-tests", title: "Tests automatisés", description: "Tests unitaires, composants, intégration et parcours end-to-end.", status: "not-started", progress: 0, priority: "critical", evidence: "Aucune suite de tests identifiée.", acceptanceCriteria: ["Parcours critiques couverts", "Tests exécutés en CI"] },
       { id: "quality-gates", title: "Quality gates CI", description: "Bloquer les builds en cas d'erreur TypeScript, lint, test ou accessibilité critique.", status: "in-progress", progress: 30, priority: "critical", evidence: "Typecheck réussit, mais les erreurs TypeScript et ESLint sont ignorées au build.", acceptanceCriteria: ["Aucune erreur ignorée", "CI requise avant fusion"] },
       { id: "monitoring", title: "Monitoring et alertes", description: "Suivi des erreurs, disponibilité, performance et incidents.", status: "not-started", progress: 0, priority: "high", evidence: "Aucun outil de monitoring identifié.", acceptanceCriteria: ["Alertes actionnables", "Erreurs front et backend corrélées"] },
-      { id: "deployment-strategy", title: "Stratégie de déploiement", description: "Choisir et documenter GitHub Pages, Firebase App Hosting ou une autre cible.", status: "in-progress", progress: 55, priority: "high", evidence: "Deux configurations coexistent; GitHub Pages possède un workflow complet.", acceptanceCriteria: ["Cible officielle choisie", "Rollback documenté", "Environnements preview et production"] },
+      { id: "deployment-strategy", title: "Stratégie de déploiement", description: "Choisir et documenter GitHub Pages, Firebase App Hosting ou une autre cible.", status: "in-progress", progress: 75, priority: "high", evidence: "GitHub Pages est la cible publique du frontend statique; le workflow active Pages automatiquement puis construit et déploie la branche main. Firebase reste réservé à une future décision backend.", acceptanceCriteria: ["Cible officielle choisie", "Déploiement GitHub Pages vérifié", "Rollback documenté", "Environnements preview et production"] },
       { id: "ai-assistance", title: "Fonctions IA encadrées", description: "Assistant multilingue, recherche sémantique ou aide éditoriale avec validation humaine.", status: "in-progress", progress: 10, priority: "low", evidence: "Genkit/Gemini configuré sans flow ni interface.", acceptanceCriteria: ["Cas d'usage validé", "Protection des données", "Évaluation qualité et coût"] },
       { id: "stable-handoff", title: "Gouvernance STABLE et handoff", description: "Appliquer un cadre d'ingénierie commun et transmettre un état vérifiable après chaque feature.", status: "completed", progress: 100, priority: "critical", evidence: "STABLE_FRAMEWORK.md, STABLE_AI_CODING_SKILL.md et CODE_HANDOFF.md intégrés; procédure de synchronisation documentée.", acceptanceCriteria: ["Règles STABLE présentes dans le dépôt", "Handoff initial créé", "Tracker Markdown et UI mis à jour", "Procédure post-feature documentée"] },
     ],
