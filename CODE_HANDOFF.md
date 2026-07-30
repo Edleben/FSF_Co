@@ -251,7 +251,7 @@ Copier ce bloc à la suite du journal pour chaque livraison :
 - Décisions d'architecture : composant image partagé qui préfixe uniquement les chemins locaux avec `NEXT_PUBLIC_SITE_BASE_PATH`; le JSON de 230 images conserve ses chemins indépendants de l'hébergement. Le préfixe est vide en local et vaut `/FSF_Co` au build GitHub Pages.
 - Critères d'acceptation vérifiés : aucune image exportée sous `/images` ou `/team` sans préfixe; toutes les pages utilisent le composant partagé; la galerie conserve `PAGE_SIZE = 24`, `loading="lazy"` et `IntersectionObserver`.
 - Commandes et tests exécutés : `npm.cmd run typecheck`, build avec `GITHUB_PAGES=true`, audit des pages HTML exportées et `git diff --check`.
-- Résultat QA manuelle : à compléter après déploiement et contrôles HTTP des images publiques.
+- Résultat QA manuelle : accueil, À propos, initiatives, actualités, contact et galerie répondent en HTTP 200; les images échantillonnées sur chaque page répondent en HTTP 200 et aucun chemin `/images` ou `/team` non préfixé n'est rendu. La galerie publique contient 26 balises image dans son HTML initial, et non les 230 médias du catalogue.
 - Risques ou limitations : les fichiers images originaux restent lourds; ce correctif résout leur URL, pas leur compression ni leur migration vers un CDN.
 - Rollback : rétablir les imports directs depuis `next/image`, retirer le composant partagé et la variable de préfixe; cela réintroduirait les images 404 sur GitHub Pages.
 - Prochaine action : déployer, vérifier un échantillon d'images sur les pages publiques et confirmer que la galerie ne charge pas les 230 médias initialement.
