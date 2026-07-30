@@ -4,7 +4,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import Image from "next/image";
+import Image from "@/components/site-image";
 // Removed dynamic import for LeafletMap
 import { Button } from "@/components/ui/button";
 import {

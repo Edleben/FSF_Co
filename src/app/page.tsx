@@ -3,7 +3,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import Image from "next/image";
+import Image from "@/components/site-image";
 import Link from "next/link";
 import { CalendarDays, Users, HeartHandshake, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";

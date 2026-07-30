@@ -4,7 +4,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import Image from "next/image";
+import Image from "@/components/site-image";
 import { ImageCarousel } from "@/components/ui/image-carousel";
 import { Button } from "@/components/ui/button";
 import {
@@ -286,4 +286,3 @@ export default function VolunteerPage() {
   );
 }
 
-    

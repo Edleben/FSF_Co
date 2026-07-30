@@ -1,7 +1,7 @@
 
 "use client";
 
-import Image from 'next/image';
+import Image from '@/components/site-image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Users, Target, Eye, Landmark, Heart, HandHeart } from 'lucide-react';

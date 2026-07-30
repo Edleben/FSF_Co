@@ -2,7 +2,7 @@
 "use client";
 
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from '@/components/site-image';
 import { useState, type FC } from 'react';
 import { Menu, X, Globe } from 'lucide-react';
 import FsfLogo from '@/components/icons/fsf-logo';

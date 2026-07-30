@@ -1,6 +1,6 @@
 # FSF Website — Project Tracker & Audit
 
-> Version 1.8 · Dernière révision : 29 juillet 2026 · Branche de travail : `feature/FSF_site_Update`
+> Version 1.9 · Dernière révision : 30 juillet 2026 · Branche de travail : `feature/FSF_site_Update`
 
 Ce document est le registre d'évolution du site de la Fondation Frédéric Saba. Il doit être revu à chaque livraison, audit fonctionnel ou changement de périmètre. La page `/project-tracker` fournit la vue interactive correspondante.
 
@@ -97,7 +97,7 @@ Ce document est le registre d'évolution du site de la Fondation Frédéric Saba
 | Tests automatisés | Non commencée | 0 % | Couvrir les parcours critiques dans la CI. |
 | Quality gates CI | En cours | 30 % | Ne plus ignorer TypeScript/ESLint et exiger la CI. |
 | Monitoring et alertes | Non commencée | 0 % | Alertes et corrélation front/backend. |
-| Stratégie de déploiement | En cours | 85 % | GitHub Pages retenu pour le frontend statique avec le sous-chemin `/FSF_Co`; maintenir le rollback et préparer les previews. |
+| Stratégie de déploiement | En cours | 90 % | GitHub Pages sert les routes et médias sous `/FSF_Co`; maintenir le rollback et préparer les previews. |
 | Fonctions IA encadrées | En cours | 10 % | Valider l'usage, la confidentialité, la qualité et le coût. |
 | Gouvernance STABLE et handoff | Terminée | 100 % | Maintenir STABLE, le tracker et `CODE_HANDOFF.md` après chaque feature. |
 
@@ -114,6 +114,7 @@ Ce document est le registre d'évolution du site de la Fondation Frédéric Saba
 | 2026-07-29 | 1.6 | Report de Sprint 2 | Les quatre features de formulaires et sécurité sont marquées « À revisiter »; les progressions auditées sont conservées dans l'attente d'une replanification backend. |
 | 2026-07-29 | 1.7 | Activation du déploiement public | GitHub Pages retenu pour le frontend statique; le workflow peut activer Pages automatiquement avant la construction et la publication. |
 | 2026-07-29 | 1.8 | Correction du sous-chemin GitHub Pages | `basePath` et `assetPrefix` alignés sur le dépôt `FSF_Co` afin que les ressources CSS, JavaScript et médias soient servies depuis l'URL publique. |
+| 2026-07-30 | 1.9 | Fiabilisation des images déployées | Composant image partagé sensible au sous-chemin; pages publiques préfixées au build et galerie maintenue à 24 cartes initiales avec lazy loading et lots progressifs. |
 
 ## Procédure de mise à jour
 

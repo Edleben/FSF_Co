@@ -8,7 +8,7 @@
 |---|---|
 | Projet | Frédéric Saba Foundation Website |
 | Branche active | `feature/FSF_site_Update` |
-| Dernière mise à jour | 2026-07-29 |
+| Dernière mise à jour | 2026-07-30 |
 | Tracker fonctionnel | `PROJECT_TRACKER.md` |
 | Tracker UI | `/project-tracker` |
 | Référentiel d'ingénierie | `STABLE_FRAMEWORK.md` |
@@ -242,3 +242,16 @@ Copier ce bloc à la suite du journal pour chaque livraison :
 - Risques ou limitations : le poids des médias allonge le workflow; les formulaires backend restent hors du périmètre GitHub Pages.
 - Rollback : rétablir le sous-chemin précédent, ce qui remettrait les ressources publiques en erreur 404.
 - Prochaine action : construire avec `GITHUB_PAGES=true`, publier et contrôler la page, les assets et les routes principales.
+
+### 2026-07-30 — Fiabilisation des images sur GitHub Pages
+
+- Objectif : afficher les images sur toutes les pages déployées sans charger l'intégralité de la galerie au premier rendu.
+- Sprint / feature : Sprint 6 — Stratégie de déploiement; contrôle de non-régression de Sprint 1 — Fiabilisation de la galerie.
+- Fichiers modifiés : `src/components/site-image.tsx`, `next.config.ts`, les consommateurs de `next/image` et les trois sources de suivi.
+- Décisions d'architecture : composant image partagé qui préfixe uniquement les chemins locaux avec `NEXT_PUBLIC_SITE_BASE_PATH`; le JSON de 230 images conserve ses chemins indépendants de l'hébergement. Le préfixe est vide en local et vaut `/FSF_Co` au build GitHub Pages.
+- Critères d'acceptation vérifiés : aucune image exportée sous `/images` ou `/team` sans préfixe; toutes les pages utilisent le composant partagé; la galerie conserve `PAGE_SIZE = 24`, `loading="lazy"` et `IntersectionObserver`.
+- Commandes et tests exécutés : `npm.cmd run typecheck`, build avec `GITHUB_PAGES=true`, audit des pages HTML exportées et `git diff --check`.
+- Résultat QA manuelle : à compléter après déploiement et contrôles HTTP des images publiques.
+- Risques ou limitations : les fichiers images originaux restent lourds; ce correctif résout leur URL, pas leur compression ni leur migration vers un CDN.
+- Rollback : rétablir les imports directs depuis `next/image`, retirer le composant partagé et la variable de préfixe; cela réintroduirait les images 404 sur GitHub Pages.
+- Prochaine action : déployer, vérifier un échantillon d'images sur les pages publiques et confirmer que la galerie ne charge pas les 230 médias initialement.

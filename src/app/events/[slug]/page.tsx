@@ -1,5 +1,5 @@
 
-import Image from 'next/image';
+import Image from '@/components/site-image';
 import { ImageCarousel } from '@/components/ui/image-carousel';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
